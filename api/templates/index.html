@@ -14,7 +14,16 @@
 
     <div class="container">
 
-        <br>
+        <br><br><br><br>
+
+        <div id="greeter" style="text-align: center;">
+            <h1><strong>Hi, I'm Evan</strong></h1>
+            <h3>17 years old, licensed 15/12/2020</h3>
+        </div>
+
+        <br><br><br><br>
+
+        <hr>
 
         <div id="quick-stats">
             <div style="width:max-content; margin:auto;display: flex;">
@@ -27,7 +36,7 @@
                 </div>
 
                 <div class="card border-success m-3" style="width:100vw; max-width: 18rem;">
-                    <div class="card-header">Most Recent Spot</div>
+                    <div class="card-header">Last Heard</div>
                     <div class="card-body text-success">
                         <p class="card-text">{{last_spot}}</p>
                     </div>
@@ -51,22 +60,30 @@
                     </div>
                     <div class="col-8">
                         <div class="card">
+                            <!-- prettier-ignore-start -->
                             <div class="card-header">Recent Activity</div>
                             <ul class="list-group list-group-flush">
                                 {% for entry in activity %}
-                                <li class="list-group-item {% if entry["type"] == "spot" %}disabled{% endif %}">
-                                    <strong>VA3ZZA</strong>
-                                    {% if entry["type"] == "contact" %}
-                                    contacted
-                                    {% else %}
-                                    spotted by
-                                    {% endif %}
-                                    <strong>{{entry["other_callsign"]}}</strong>
-                                    on
-                                    <em>{{entry["freq"]}} kHz</em>
+                                <li class='list-group-item {% if entry["type"] == "spot" %} disabled {% endif %}'>
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6><strong>VA3ZZA</strong>
+                                            {% if entry["type"] == "contact" %}
+                                            contacted
+                                            {% else %}
+                                            spotted by
+                                            {% endif %}
+                                            <strong>{{entry["other_callsign"]}}</strong>
+                                            {% if entry["freq"] %}
+                                            on
+                                            <em>{{entry["freq"]}} kHz</em>
+                                            {% endif %}
+                                        </h6>
+                                        <small style="color:gray;">{{entry["friendly_time"]}}</small>
+                                    </div>
                                 </li>
                                 {% endfor %}
                             </ul>
+                            <!-- prettier-ignore-end -->
 
                         </div>
                     </div>
@@ -79,7 +96,88 @@
 
         <hr>
 
-    </div>
+        <div id="content">
+
+            <h2>About Me</h2>
+
+            <p>For quite a while, I have been extremely interested in computers and circuitry. I have been writing
+                software for around 7 years, and have been tinkering with electronics for approximately the same amount
+                of time.</p>
+
+            <p>My interest in amateur radio came in 2018, when I discovered with world of software-defined radios. In
+                the time between discovering amateur radio and getting licensed I:</p>
+            <ul>
+                <li>Experimented with decoding images from NOAA-15, NOAA-18, and NOAA-19</li>
+                <li>Listened in to a few nets held on local repeaters using my SDRs</li>
+                <li>Begun to learn morse code</li>
+                <li>Continued to learn about various forms of radio communication through DEFCON talks, and
+                    presentations from various radio clubs online</li>
+            </ul>
+
+            <p>After getting licensed and receiving my callsign, I immediately got on the air (quite literally) and
+                started participating in local nets, occasional simplex QSOs, and more.</p>
+
+            <p>I now primarily operate on 40 and 20 meters, using CW and RTTY. I have come to enjoy morse code, and I
+                actively try to meet new people on the air each day (sticking to CW for now). After a few months of CW
+                contacts, my morse code skills have become what I call "functional". I still struggle a bit when sending
+                words I don't use often, but I stay persistent to hopefully become morse-code-fluent.</p>
+
+            <h2>The "Shack"</h2>
+
+            <p>My ham shack is currently my bedroom, where I have the following radios:</p>
+
+            <ul>
+                <li>
+                    <a href="https://elecraft.com/products/kx2-ssb-cw-data-80-10-m-transceiver">
+                        Elecraft KX2
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.aliexpress.com/item/32794436207.html">
+                        Baofeng UV-5R
+                    </a>
+                </li>
+                <li>
+                    <a
+                        href="https://countycomm.com/collections/radio/products/countycomm-gp-5-ssb-general-purpose-radio">
+                        CountyComm GP-5
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.nooelec.com/store/nesdr-nano-three.html">
+                        Nooelec NESDR Nano 3
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.amazon.com/dp/B0129EBDS2/">
+                        RTL-SDR RTL2832U
+                    </a>
+                </li>
+                <li>
+                    KC9ON
+                    <a href="https://kc9on.com/ham-radio/qrp-radios/chinese-qrp-kits-2/chinese-pixie/">Pixie</a>
+                    and
+                    <a href="https://kc9on.com/product/pixie-switch/">Pixie Switch</a>
+                    kit
+                </li>
+            </ul>
+
+            <p>My antenna is a 40m quarter-wave dipole, or a 20m EFHW (depending on how I set it) that is made of
+                stripped ethernet cables I pulled from my school's tech dumpsters. The wires are wrapped around my
+                bedroom in opposite directions, and work well enough. Once summer comes, I hope to set up a much larger
+                EFHW antenna outdoors that should reduce my current antenna losses, and allow me to use some more bands.
+            </p>
+
+            <h2>About This Page</h2>
+
+            <p>The page you are currently reading is a dynamically generated HTML document. The data near the top is
+                pretty much updated in real time (pretty much = 2 minute data cache). This has just been a random little
+                project of mine, and I think it has worked out fairly well. The source code is available <a
+                    href="https://github.com/Ewpratten/qrz_page">on GitHub</a>.</p>
+
+            <br><br>
+
+        </div>
 
     </div>
 
