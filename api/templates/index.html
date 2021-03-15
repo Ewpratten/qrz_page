@@ -8,6 +8,20 @@
     <title>QRZ for VA3ZZA</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        @media (min-width: 769px) {
+            #semi_response {
+                display: flex;
+            }
+        }
+        @media (max-width: 768px) {
+            .stat-card{
+                max-width: unset !important;
+                margin-left: unset !important;
+                margin-right: unset !important;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -26,23 +40,23 @@
         <hr>
 
         <div id="quick-stats">
-            <div style="width:max-content; margin:auto;display: flex;">
+            <div id="semi_response" style="width:100%; max-width:900px; margin:auto; overflow:auto;">
 
-                <div class="card border-success m-3" style="width:100vw; max-width: 18rem;">
+                <div class="card border-success stat-card" style="width:100%; max-width: 290px; margin:10px;">
                     <div class="card-header">Farthest Heard</div>
                     <div class="card-body text-success">
                         <p class="card-text">{{farthest_distance}}</p>
                     </div>
                 </div>
 
-                <div class="card border-success m-3" style="width:100vw; max-width: 18rem;">
+                <div class="card border-success stat-card" style="width:100%; max-width: 290px; margin:10px;">
                     <div class="card-header">Last Heard</div>
                     <div class="card-body text-success">
                         <p class="card-text">{{last_spot}}</p>
                     </div>
                 </div>
 
-                <div class="card border-success m-3" style="width:100vw; max-width: 18rem;">
+                <div class="card border-success stat-card" style="width:100%; max-width: 290px; margin:10px;">
                     <div class="card-header">Last APRS Beacon</div>
                     <div class="card-body text-success">
                         <p class="card-text">{{last_aprs}}</p>
@@ -52,45 +66,33 @@
             </div>
         </div>
 
-        <div id="history">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-
-                    </div>
-                    <div class="col-8">
-                        <div class="card">
-                            <!-- prettier-ignore-start -->
-                            <div class="card-header">Recent Activity</div>
-                            <ul class="list-group list-group-flush">
-                                {% for entry in activity %}
-                                <li class='list-group-item {% if entry["type"] == "spot" %} disabled {% endif %}'>
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h6><strong>VA3ZZA</strong>
-                                            {% if entry["type"] == "contact" %}
-                                            contacted
-                                            {% else %}
-                                            spotted by
-                                            {% endif %}
-                                            <strong>{{entry["other_callsign"]}}</strong>
-                                            {% if entry["freq"] %}
-                                            on
-                                            <em>{{entry["freq"]}} kHz</em>
-                                            {% endif %}
-                                        </h6>
-                                        <small style="color:gray;">{{entry["friendly_time"]}}</small>
-                                    </div>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                            <!-- prettier-ignore-end -->
-
+        <div id="history" style="width:100%; max-width:710px; margin:auto;">
+            <div class="card">
+                <!-- prettier-ignore-start -->
+                <div class="card-header">Recent Activity</div>
+                <ul class="list-group list-group-flush">
+                    {% for entry in activity %}
+                    <li class='list-group-item {% if entry["type"] == "spot" %} disabled {% endif %}'>
+                        <div class="d-flex w-100 justify-content-between">
+                            <h6><strong>VA3ZZA</strong>
+                                {% if entry["type"] == "contact" %}
+                                contacted
+                                {% else %}
+                                spotted by
+                                {% endif %}
+                                <strong>{{entry["other_callsign"]}}</strong>
+                                {% if entry["freq"] %}
+                                on
+                                <em>{{entry["freq"]}} kHz</em>
+                                {% endif %}
+                            </h6>
+                            <small style="color:gray;">{{entry["friendly_time"]}}</small>
                         </div>
-                    </div>
-                    <div class="col">
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!-- prettier-ignore-end -->
 
-                    </div>
-                </div>
             </div>
         </div>
 
