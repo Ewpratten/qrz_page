@@ -6,7 +6,7 @@ import dateutil.parser
 def get_recent_logs() -> List[dict]:
 
     res = requests.get(
-        "https://cloudlog.i.retrylife.ca/index.php/logbook/qso_map/10")
+        "https://cloudlog.s2.retrylife.ca/index.php/logbook/qso_map/10")
 
     if int(res.status_code / 100) != 2:
         return []
