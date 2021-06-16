@@ -1,6 +1,7 @@
 requests
-flask
+werkzeug==0.16.0
+flask-session
+flask==1.1.1
 git+https://github.com/Ewpratten/webapputils
 timeago
 python-dateutil
-werkzeug
