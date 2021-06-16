@@ -3,3 +3,4 @@ flask
 git+https://github.com/Ewpratten/webapputils
 timeago
 python-dateutil
+werkzeug
