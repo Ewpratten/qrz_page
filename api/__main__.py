@@ -82,7 +82,7 @@ def index():
     if activity:
         last_spot_humantime = timeago.format(datetime.datetime.fromtimestamp(activity[0]["timestamp"], None), datetime.datetime.utcnow())
     else:
-        last_spot_humantime = "never"
+        last_spot_humantime = "Last Month"
 
     # Make response
     res = flask.make_response(flask.render_template('index.html', last_aprs=last_aprs_humantime,
